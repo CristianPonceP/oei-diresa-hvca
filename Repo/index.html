@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Repositorio de Estadística en Salud</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="app">
+
+  <!-- ════ HEADER ════ -->
+  <header class="header">
+    <div class="header-brand">
+      <div class="header-logo">
+        <i class="fa-solid fa-heart-pulse"></i>
+      </div>
+      <div class="header-text">
+        <h1>Repositorio de Estadística en Salud</h1>
+        <p>Indicadores, tableros y bases de datos — Actualizado 2026</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="searchInput" placeholder="Buscar recurso..." />
+      </div>
+      <button class="btn-icon" onclick="toggleDark()" title="Modo oscuro">
+        <i class="fa-solid fa-moon" id="darkIcon"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- ════ MAIN ════ -->
+  <div class="main">
+
+    <!-- SIDEBAR -->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <span class="sidebar-label">Menú</span>
+        <button class="sidebar-toggle" onclick="toggleSidebar()">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Principal</div>
+
+        <div class="nav-item active" onclick="showSection('tableros', this)">
+          <div class="nav-icon"><i class="fa-solid fa-chart-column"></i></div>
+          <span class="nav-text">Tableros</span>
+        </div>
+
+        <div class="nav-item" onclick="showSection('indicadores', this)">
+          <div class="nav-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <span class="nav-text">Indicadores</span>
+        </div>
+
+        <div class="nav-item" onclick="showSection('manuales', this)">
+          <div class="nav-icon"><i class="fa-solid fa-book-medical"></i></div>
+          <span class="nav-text">Manuales</span>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="badge-counts">
+          <div class="badge-row">
+            <span>Recursos activos</span>
+            <span class="badge-count">24</span>
+          </div>
+          <div class="badge-row">
+            <span>Última actualización</span>
+            <span class="badge-count">Hoy</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- CONTENT -->
+    <main class="content">
+
+      <!-- ──── TABLEROS ──── -->
+      <div id="tableros" class="content-section active">
+
+        <div class="stats-bar">
+          <div class="stat-pill">
+            <div class="stat-dot" style="background:#0b9e6e"></div>
+            <div class="stat-info">
+              <div class="stat-label">Cobertura vacunal</div>
+              <div class="stat-val">87.4%</div>
+            </div>
+            <span class="stat-trend up">▲ 2.1%</span>
+          </div>
+          <div class="stat-pill">
+            <div class="stat-dot" style="background:#38bdf8"></div>
+            <div class="stat-info">
+              <div class="stat-label">Gestantes atendidas</div>
+              <div class="stat-val">12,340</div>
+            </div>
+            <span class="stat-trend up">▲ 4.5%</span>
+          </div>
+          <div class="stat-pill">
+            <div class="stat-dot" style="background:#f97316"></div>
+            <div class="stat-info">
+              <div class="stat-label">Emergencias / mes</div>
+              <div class="stat-val">3,890</div>
+            </div>
+            <span class="stat-trend down">▼ 1.2%</span>
+          </div>
+          <div class="stat-pill">
+            <div class="stat-dot" style="background:#8b5cf6"></div>
+            <div class="stat-info">
+              <div class="stat-label">Casos salud mental</div>
+              <div class="stat-val">5,670</div>
+            </div>
+            <span class="stat-trend up">▲ 7.3%</span>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <div class="section-title-group">
+            <h2>Estadísticas en Salud</h2>
+            <p>Tableros interactivos por programa sanitario</p>
+          </div>
+          <div class="section-meta">
+            <span class="chip active">Todos</span>
+            <span class="chip">Recientes</span>
+          </div>
+        </div>
+
+        <div class="cards-grid" id="grid-tableros"></div>
+        <div class="empty-state" id="empty-tableros">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <p>No se encontraron resultados</p>
+        </div>
+      </div>
+
+      <!-- ──── INDICADORES ──── -->
+      <div id="indicadores" class="content-section">
+        <div class="section-header">
+          <div class="section-title-group">
+            <h2>Indicadores</h2>
+            <p>Métricas clave por área de salud</p>
+          </div>
+        </div>
+        <div class="cards-grid" id="grid-indicadores"></div>
+        <div class="empty-state" id="empty-indicadores">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <p>No se encontraron resultados</p>
+        </div>
+      </div>
+
+      <!-- ──── MANUALES ──── -->
+      <div id="manuales" class="content-section">
+        <div class="section-header">
+          <div class="section-title-group">
+            <h2>Manuales</h2>
+            <p>Documentos técnicos y protocolos</p>
+          </div>
+        </div>
+        <div class="cards-grid" id="grid-manuales"></div>
+        <div class="empty-state" id="empty-manuales">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <p>No se encontraron resultados</p>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
