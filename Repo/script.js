@@ -16,8 +16,8 @@ function isNew(dateStr) {
 // status: 'active' | 'new' | 'unavailable' | 'wip'
 function statusBadge(card) {
     if (card.status === 'unavailable') return `<span class="badge badge-unavailable"><i class="fa-solid fa-ban"></i> No disponible</span>`;
-    if (card.status === 'wip')         return `<span class="badge badge-wip"><i class="fa-solid fa-gear fa-spin"></i> En implementación</span>`;
-    if (isNew(card.date))              return `<span class="badge badge-new"><i class="fa-solid fa-star"></i> Nuevo</span>`;
+    if (card.status === 'wip') return `<span class="badge badge-wip"><i class="fa-solid fa-gear fa-spin"></i> En implementación</span>`;
+    if (isNew(card.date)) return `<span class="badge badge-new"><i class="fa-solid fa-star"></i> Nuevo</span>`;
     return '';
 }
 
@@ -231,35 +231,27 @@ const manualesData = [
         tag: 'Manual',
         href: '#',
         status: 'wip'
-    },
-    {
-        icon: 'fa-boxes-stacked',
-        title: 'SIGA / SEACE',
-        desc: 'Guías para el sistema integrado de gestión administrativa y plataforma de contrataciones.',
-        tag: 'Manual',
-        href: '#',
-        status: 'unavailable'
     }
 ];
 
 // ── PALETA DE COLORES POR ÍNDICE ─────────────────────────────────────────────
 // Harmonic palette based on hsl(198,91%,44%) + analogous + complementary
 const PALETTE = [
-    { accent: 'hsl(198,91%,40%)',  iconBg: 'hsla(198,91%,40%,0.12)'  }, // cyan primario
-    { accent: 'hsl(178,65%,36%)',  iconBg: 'hsla(178,65%,36%,0.12)'  }, // teal
-    { accent: 'hsl(215,75%,48%)',  iconBg: 'hsla(215,75%,48%,0.12)'  }, // azul
-    { accent: 'hsl(162,60%,38%)',  iconBg: 'hsla(162,60%,38%,0.12)'  }, // verde esmeralda
-    { accent: 'hsl(188,80%,38%)',  iconBg: 'hsla(188,80%,38%,0.12)'  }, // cyan-teal
-    { accent: 'hsl(228,65%,52%)',  iconBg: 'hsla(228,65%,52%,0.12)'  }, // índigo
-    { accent: 'hsl(172,55%,34%)',  iconBg: 'hsla(172,55%,34%,0.12)'  }, // verde agua
-    { accent: 'hsl(205,80%,42%)',  iconBg: 'hsla(205,80%,42%,0.12)'  }, // azul cielo
-    { accent: 'hsl(18,88%,48%)',   iconBg: 'hsla(18,88%,48%,0.12)'   }, // naranja cálido
-    { accent: 'hsl(150,55%,36%)',  iconBg: 'hsla(150,55%,36%,0.12)'  }, // verde salud
-    { accent: 'hsl(260,55%,48%)',  iconBg: 'hsla(260,55%,48%,0.12)'  }, // violeta
-    { accent: 'hsl(338,70%,46%)',  iconBg: 'hsla(338,70%,46%,0.12)'  }, // rosa-rojo
-    { accent: 'hsl(42,88%,42%)',   iconBg: 'hsla(42,88%,42%,0.12)'   }, // ámbar
-    { accent: 'hsl(195,75%,35%)',  iconBg: 'hsla(195,75%,35%,0.12)'  }, // azul pato
-    { accent: 'hsl(16,75%,44%)',   iconBg: 'hsla(16,75%,44%,0.12)'   }, // terracota
+    { accent: 'hsl(198,91%,40%)', iconBg: 'hsla(198,91%,40%,0.12)' }, // cyan primario
+    { accent: 'hsl(178,65%,36%)', iconBg: 'hsla(178,65%,36%,0.12)' }, // teal
+    { accent: 'hsl(215,75%,48%)', iconBg: 'hsla(215,75%,48%,0.12)' }, // azul
+    { accent: 'hsl(162,60%,38%)', iconBg: 'hsla(162,60%,38%,0.12)' }, // verde esmeralda
+    { accent: 'hsl(188,80%,38%)', iconBg: 'hsla(188,80%,38%,0.12)' }, // cyan-teal
+    { accent: 'hsl(228,65%,52%)', iconBg: 'hsla(228,65%,52%,0.12)' }, // índigo
+    { accent: 'hsl(172,55%,34%)', iconBg: 'hsla(172,55%,34%,0.12)' }, // verde agua
+    { accent: 'hsl(205,80%,42%)', iconBg: 'hsla(205,80%,42%,0.12)' }, // azul cielo
+    { accent: 'hsl(18,88%,48%)', iconBg: 'hsla(18,88%,48%,0.12)' }, // naranja cálido
+    { accent: 'hsl(150,55%,36%)', iconBg: 'hsla(150,55%,36%,0.12)' }, // verde salud
+    { accent: 'hsl(260,55%,48%)', iconBg: 'hsla(260,55%,48%,0.12)' }, // violeta
+    { accent: 'hsl(338,70%,46%)', iconBg: 'hsla(338,70%,46%,0.12)' }, // rosa-rojo
+    { accent: 'hsl(42,88%,42%)', iconBg: 'hsla(42,88%,42%,0.12)' }, // ámbar
+    { accent: 'hsl(195,75%,35%)', iconBg: 'hsla(195,75%,35%,0.12)' }, // azul pato
+    { accent: 'hsl(16,75%,44%)', iconBg: 'hsla(16,75%,44%,0.12)' }, // terracota
 ];
 
 function getColor(i) { return PALETTE[i % PALETTE.length]; }
@@ -270,10 +262,19 @@ function generateQR(containerId, url) {
     if (!url || url === '#') {
         const el = document.getElementById(containerId);
         if (el) el.innerHTML = `
-          <div style="width:100px;height:100px;display:flex;flex-direction:column;
-                      align-items:center;justify-content:center;gap:6px;opacity:0.45">
-            <i class="fa-solid fa-link-slash" style="font-size:24px;color:#94a3b8"></i>
-            <span style="font-size:0.62rem;color:#94a3b8;text-align:center;line-height:1.3">Sin<br>enlace</span>
+          <div style="width:100px;
+                      height:100px;
+                      display:flex;
+                      flex-direction:column;
+                      align-items:center;
+                      justify-content:center;
+                      gap:6px;
+                      opacity:0.45">
+            <i class="fa-solid fa-link-slash" style="font-size:24px; color:#94a3b8"></i>
+            <span style="font-size:0.62rem;
+                         color:#94a3b8;
+                         text-align:center;
+                         line-height:1.3"> Sin<br>enlace </span>
           </div>`;
         return;
     }
@@ -283,10 +284,12 @@ function generateQR(containerId, url) {
             if (!el || el.dataset.generated) return;
             el.dataset.generated = 'true';
             try {
-                new QRCode(el, { text: url, width: 100, height: 100,
+                new QRCode(el, {
+                    text: url, width: 100, height: 100,
                     colorDark: '#0a3042', colorLight: '#ffffff',
-                    correctLevel: QRCode.CorrectLevel.M });
-            } catch(e) { console.warn('QR:', e); }
+                    correctLevel: QRCode.CorrectLevel.M
+                });
+            } catch (e) { console.warn('QR:', e); }
         } else if (_qrAttempts++ < 30) setTimeout(tryGen, 200);
     }
     tryGen();
@@ -298,13 +301,13 @@ const currentFilter = { tableros: 'all', indicadores: 'all', manuales: 'all' };
 function renderCards(data, containerId) {
     const container = document.getElementById(containerId);
     container.innerHTML = data.map((card, i) => {
-        const uid      = `qr-${containerId}-${i}`;
+        const uid = `qr-${containerId}-${i}`;
         const disabled = isDisabled(card);
-        const color    = getColor(i);
-        const badge    = statusBadge(card);
+        const color = getColor(i);
+        const badge = statusBadge(card);
         const openAttr = (!disabled && card.href !== '#') ? 'target="_blank"' : '';
         const hrefAttr = disabled ? 'javascript:void(0)' : card.href;
-        const isNew_   = isNew(card.date);
+        const isNew_ = isNew(card.date);
 
         return `
         <div class="card-flip${disabled ? ' is-disabled' : ''}${isNew_ ? ' is-new' : ''}"
@@ -327,13 +330,13 @@ function renderCards(data, containerId) {
               <div class="card-footer">
                 <span class="card-tag">${card.tag}</span>
                 ${disabled
-                  ? `<span class="btn-qr btn-qr-disabled" title="No disponible">
+                ? `<span class="btn-qr btn-qr-disabled" title="No disponible">
                        <i class="fa-solid fa-lock"></i>
                      </span>`
-                  : `<button class="btn-qr" onclick="flipCard(event,this)" title="Ver QR">
+                : `<button class="btn-qr" onclick="flipCard(event,this)" title="Ver QR">
                        <i class="fa-solid fa-qrcode"></i><span>QR</span>
                      </button>`
-                }
+            }
               </div>
             </a>
 
@@ -359,9 +362,9 @@ function renderCards(data, containerId) {
     data.forEach((card, i) => generateQR(`qr-${containerId}-${i}`, card.href));
 }
 
-renderCards(cardData,        'grid-tableros');
+renderCards(cardData, 'grid-tableros');
 renderCards(indicadoresData, 'grid-indicadores');
-renderCards(manualesData,    'grid-manuales');
+renderCards(manualesData, 'grid-manuales');
 
 // ── FLIP ─────────────────────────────────────────────────────────────────────
 function flipCard(event, btn) {
@@ -382,17 +385,17 @@ function setFilter(sectionId, filter, chipEl) {
 }
 
 function applyFilters(sectionId) {
-    const grid   = document.getElementById(`grid-${sectionId}`);
-    const empty  = document.getElementById(`empty-${sectionId}`);
-    const query  = document.getElementById('searchInput').value.toLowerCase().trim();
+    const grid = document.getElementById(`grid-${sectionId}`);
+    const empty = document.getElementById(`empty-${sectionId}`);
+    const query = document.getElementById('searchInput').value.toLowerCase().trim();
     const filter = currentFilter[sectionId];
-    let visible  = 0;
+    let visible = 0;
 
     grid.querySelectorAll('.card-flip').forEach(card => {
-        const textOk   = !query || (card.dataset.search || '').includes(query);
+        const textOk = !query || (card.dataset.search || '').includes(query);
         const filterOk = filter === 'all' || card.dataset.new === 'true';
         if (textOk && filterOk) { card.classList.remove('hidden'); visible++; }
-        else                    { card.classList.add('hidden'); }
+        else { card.classList.add('hidden'); }
     });
     if (empty) empty.style.display = visible === 0 ? 'block' : 'none';
 }
@@ -404,7 +407,7 @@ function showSection(id, el) {
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
     if (el) el.classList.add('active');
     document.getElementById('searchInput').value = '';
-    document.querySelectorAll(`#${id} .chip`).forEach((c,i) => c.classList.toggle('active', i===0));
+    document.querySelectorAll(`#${id} .chip`).forEach((c, i) => c.classList.toggle('active', i === 0));
     currentFilter[id] = 'all';
     applyFilters(id);
 }
@@ -421,5 +424,5 @@ function toggleSidebar() {
 
 // ── SEARCH ───────────────────────────────────────────────────────────────────
 document.getElementById('searchInput').addEventListener('input', function () {
-    ['tableros','indicadores','manuales'].forEach(sec => applyFilters(sec));
+    ['tableros', 'indicadores', 'manuales'].forEach(sec => applyFilters(sec));
 });

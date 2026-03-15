@@ -1,154 +1,159 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Repositorio de Estadística en Salud</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@600;700;800&display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-<div class="app">
+    <div class="app">
 
-    <!-- ════ HEADER ════ -->
-    <header class="header">
-        <div class="header-brand">
-            <div class="header-logo">
-                <i class="fa-solid fa-heart-pulse fa-beat"></i>
+        <!-- ════ HEADER ════ -->
+        <header class="header">
+            <div class="header-brand">
+                <div class="header-logo">
+                    <i class="fa-solid fa-heart-pulse fa-beat"></i>
+                </div>
+                <div class="header-text">
+                    <h1>Repositorio de Estadística en Salud</h1>
+                    <p>Indicadores, tableros y bases de datos — Actualizado 2026</p>
+                </div>
             </div>
-            <div class="header-text">
-                <h1>Repositorio de Estadística en Salud</h1>
-                <p>Indicadores, tableros y bases de datos — Actualizado 2026</p>
-            </div>
-        </div>
-        <div class="header-actions">
-            <div class="search-box">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="searchInput" placeholder="Buscar recurso..." />
-            </div>
-            <button class="btn-icon" onclick="toggleDark()" title="Modo oscuro">
-                <i class="fa-solid fa-moon" id="darkIcon"></i>
-            </button>
-        </div>
-    </header>
-
-    <!-- ════ MAIN ════ -->
-    <div class="main">
-
-        <!-- SIDEBAR -->
-        <nav class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <span class="sidebar-label">Menú</span>
-                <button class="sidebar-toggle" onclick="toggleSidebar()">
-                    <i class="fa-solid fa-bars-staggered"></i>
+            <div class="header-actions">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchInput" placeholder="Buscar recurso..." />
+                </div>
+                <button class="btn-icon" onclick="toggleDark()" title="Modo oscuro">
+                    <i class="fa-solid fa-moon" id="darkIcon"></i>
                 </button>
             </div>
-            <div class="nav-group">
-                <div class="nav-group-title">Principal</div>
-                <div class="nav-item active" onclick="showSection('tableros', this)">
-                    <div class="nav-icon"><i class="fa-solid fa-chart-column"></i></div>
-                    <span class="nav-text">Tableros</span>
-                </div>
-                <div class="nav-item" onclick="showSection('indicadores', this)">
-                    <div class="nav-icon"><i class="fa-solid fa-chart-line"></i></div>
-                    <span class="nav-text">Indicadores</span>
-                </div>
-                <div class="nav-item" onclick="showSection('manuales', this)">
-                    <div class="nav-icon"><i class="fa-solid fa-book-medical"></i></div>
-                    <span class="nav-text">Manuales</span>
-                </div>
-            </div>
-            <div class="sidebar-footer">
-                <div class="badge-counts">
-                    <div class="badge-row">
-                        <span>Recursos activos</span>
-                        <span class="badge-count" id="total-count">—</span>
-                    </div>
-                    <div class="badge-row">
-                        <span>Última actualización</span>
-                        <span class="badge-count">Hoy</span>
-                    </div>
-                </div>
-            </div>
-        </nav>
+        </header>
 
-        <!-- CONTENT -->
-        <main class="content">
+        <!-- ════ MAIN ════ -->
+        <div class="main">
 
-            <!-- ── LEYENDA ── -->
-            <div class="legend-bar">
-                <span class="legend-item"><span class="legend-dot dot-new"></span> Nuevo</span>
-                <span class="legend-item"><span class="legend-dot dot-wip"></span> En implementación</span>
-                <span class="legend-item"><span class="legend-dot dot-unavailable"></span> No disponible</span>
-            </div>
+            <!-- SIDEBAR -->
+            <nav class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <span class="sidebar-label">Menú</span>
+                    <button class="sidebar-toggle" onclick="toggleSidebar()">
+                        <i class="fa-solid fa-bars-staggered"></i>
+                    </button>
+                </div>
+                <div class="nav-group">
+                    <div class="nav-group-title">Principal</div>
+                    <div class="nav-item active" onclick="showSection('tableros', this)">
+                        <div class="nav-icon"><i class="fa-solid fa-chart-column"></i></div>
+                        <span class="nav-text">Tableros</span>
+                    </div>
+                    <div class="nav-item" onclick="showSection('indicadores', this)">
+                        <div class="nav-icon"><i class="fa-solid fa-chart-line"></i></div>
+                        <span class="nav-text">Indicadores</span>
+                    </div>
+                    <div class="nav-item" onclick="showSection('manuales', this)">
+                        <div class="nav-icon"><i class="fa-solid fa-book-medical"></i></div>
+                        <span class="nav-text">Manuales</span>
+                    </div>
+                </div>
+                <div class="sidebar-footer">
+                    <div class="badge-counts">
+                        <div class="badge-row">
+                            <span>Recursos activos</span>
+                            <span class="badge-count" id="total-count">—</span>
+                        </div>
+                        <div class="badge-row">
+                            <span>Última actualización</span>
+                            <span class="badge-count">Hoy</span>
+                        </div>
+                    </div>
+                </div>
+            </nav>
 
-            <!-- ──── TABLEROS ──── -->
-            <div id="tableros" class="content-section active">
-                <div class="section-header">
-                    <div class="section-title-group">
-                        <h2>Estadísticas en Salud</h2>
-                        <p>Tableros interactivos por programa sanitario</p>
-                    </div>
-                    <div class="section-meta">
-                        <span class="chip active" onclick="setFilter('tableros','all',this)">Todos</span>
-                        <span class="chip" onclick="setFilter('tableros','new',this)">Recientes</span>
-                    </div>
-                </div>
-                <div class="cards-grid" id="grid-tableros"></div>
-                <div class="empty-state" id="empty-tableros">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <p>No se encontraron resultados</p>
-                </div>
-            </div>
+            <!-- CONTENT -->
+            <main class="content">
 
-            <!-- ──── INDICADORES ──── -->
-            <div id="indicadores" class="content-section">
-                <div class="section-header">
-                    <div class="section-title-group">
-                        <h2>Indicadores</h2>
-                        <p>Métricas clave por área de salud</p>
-                    </div>
-                    <div class="section-meta">
-                        <span class="chip active" onclick="setFilter('indicadores','all',this)">Todos</span>
-                        <span class="chip" onclick="setFilter('indicadores','new',this)">Recientes</span>
-                    </div>
+                <!-- ── LEYENDA ── -->
+                <div class="legend-bar">
+                    <span class="legend-item"><span class="legend-dot dot-new"></span> Nuevo</span>
+                    <span class="legend-item"><span class="legend-dot dot-wip"></span> En implementación</span>
+                    <span class="legend-item"><span class="legend-dot dot-unavailable"></span> No disponible</span>
                 </div>
-                <div class="cards-grid" id="grid-indicadores"></div>
-                <div class="empty-state" id="empty-indicadores">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <p>No se encontraron resultados</p>
-                </div>
-            </div>
 
-            <!-- ──── MANUALES ──── -->
-            <div id="manuales" class="content-section">
-                <div class="section-header">
-                    <div class="section-title-group">
-                        <h2>Manuales</h2>
-                        <p>Documentos técnicos y protocolos</p>
+                <!-- ──── TABLEROS ──── -->
+                <div id="tableros" class="content-section active">
+                    <div class="section-header">
+                        <div class="section-title-group">
+                            <h2>Estadísticas en Salud</h2>
+                            <p>Tableros interactivos por programa sanitario</p>
+                        </div>
+                        <div class="section-meta">
+                            <span class="chip active" onclick="setFilter('tableros','all',this)">Todos</span>
+                            <span class="chip" onclick="setFilter('tableros','new',this)">Recientes</span>
+                        </div>
                     </div>
-                    <div class="section-meta">
-                        <span class="chip active" onclick="setFilter('manuales','all',this)">Todos</span>
-                        <span class="chip" onclick="setFilter('manuales','new',this)">Recientes</span>
+                    <div class="cards-grid" id="grid-tableros"></div>
+                    <div class="empty-state" id="empty-tableros">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <p>No se encontraron resultados</p>
                     </div>
                 </div>
-                <div class="cards-grid" id="grid-manuales"></div>
-                <div class="empty-state" id="empty-manuales">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <p>No se encontraron resultados</p>
-                </div>
-            </div>
 
-        </main>
+                <!-- ──── INDICADORES ──── -->
+                <div id="indicadores" class="content-section">
+                    <div class="section-header">
+                        <div class="section-title-group">
+                            <h2>Indicadores</h2>
+                            <p>Métricas clave por área de salud</p>
+                        </div>
+                        <div class="section-meta">
+                            <span class="chip active" onclick="setFilter('indicadores','all',this)">Todos</span>
+                            <span class="chip" onclick="setFilter('indicadores','new',this)">Recientes</span>
+                        </div>
+                    </div>
+                    <div class="cards-grid" id="grid-indicadores"></div>
+                    <div class="empty-state" id="empty-indicadores">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <p>No se encontraron resultados</p>
+                    </div>
+                </div>
+
+                <!-- ──── MANUALES ──── -->
+                <div id="manuales" class="content-section">
+                    <div class="section-header">
+                        <div class="section-title-group">
+                            <h2>Manuales</h2>
+                            <p>Documentos técnicos y protocolos</p>
+                        </div>
+                        <div class="section-meta">
+                            <span class="chip active" onclick="setFilter('manuales','all',this)">Todos</span>
+                            <span class="chip" onclick="setFilter('manuales','new',this)">Recientes</span>
+                        </div>
+                    </div>
+                    <div class="cards-grid" id="grid-manuales"></div>
+                    <div class="empty-state" id="empty-manuales">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <p>No se encontraron resultados</p>
+                    </div>
+                </div>
+
+            </main>
+        </div>
     </div>
-</div>
-<script src="script.js"></script>
-<script>
-    // update sidebar count after render
-    const total = document.querySelectorAll('.card-flip:not(.is-disabled)').length;
-    document.getElementById('total-count').textContent = total;
-</script>
+    <script src="script.js"></script>
+    <script>
+        // update sidebar count after render
+        const total = document.querySelectorAll('.card-flip:not(.is-disabled)').length;
+        document.getElementById('total-count').textContent = total;
+    </script>
 </body>
+
 </html>
