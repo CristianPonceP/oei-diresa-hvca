@@ -149,8 +149,8 @@ const indicadoresData = [
         title: 'Indicadores Sanitarios y de Gestión',
         desc: 'Conjunto de indicadores estratégicos para el monitoreo de la gestión sanitaria regional.',
         tag: 'Indicador',
-        href: '#',
-        status: 'wip'
+        href: 'https://goo.su/OgJrl5u',
+        date: '2026-03-17'
     },
     {
         icon: 'fa-bullseye',
@@ -174,22 +174,6 @@ const indicadoresData = [
         desc: 'Biblioteca centralizada de indicadores de salud pública con fichas técnicas y fuentes.',
         tag: 'Indicador',
         href: 'https://sites.google.com/saludhuancavelica.pe/indicadores-diresa-hvca/inicio',
-        date: '2026-03-15'
-    },
-    {
-        icon: 'fa-flask',
-        title: 'Diagnóstico de Laboratorio',
-        desc: 'Resultados de exámenes de laboratorio y tendencias diagnósticas por patología.',
-        tag: 'Indicador',
-        href: '#',
-        status: 'unavailable'
-    },
-    {
-        icon: 'fa-capsules',
-        title: 'Acceso a Medicamentos',
-        desc: 'Disponibilidad, stock y consumo de medicamentos esenciales en establecimientos MINSA.',
-        tag: 'Indicador',
-        href: '#',
         status: 'unavailable'
     }
 ];
