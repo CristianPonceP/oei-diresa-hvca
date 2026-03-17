@@ -150,7 +150,12 @@ const indicadoresData = [
         desc: 'Conjunto de indicadores estratégicos para el monitoreo de la gestión sanitaria regional.',
         tag: 'Indicador',
         href: '#',
-        status: 'wip'
+        date: '2026-03-14',
+        years: {
+            2026: 'https://goo.su/rJzTGq',
+            2025: '#',
+            2024: '#'
+        }
     },
     {
         icon: 'fa-bullseye',
@@ -158,7 +163,12 @@ const indicadoresData = [
         desc: 'Metas e indicadores de desempeño del Ministerio de Salud para establecimientos de primer nivel.',
         tag: 'Indicador',
         href: '#',
-        status: 'wip'
+        status: 'wip',
+        years: {
+            2026: '#',
+            2025: '#',
+            2024: '#'
+        }
     },
     {
         icon: 'fa-baby',
@@ -166,7 +176,12 @@ const indicadoresData = [
         desc: 'Indicadores del Fondo de Estímulo al Desempeño: nutrición, salud materna e infantil.',
         tag: 'Indicador',
         href: '#',
-        status: 'wip'
+        status: 'wip',
+        years: {
+            2026: '#',
+            2025: '#',
+            2024: '#'
+        }
     },
     {
         icon: 'fa-folder-open',
@@ -309,13 +324,31 @@ function renderCards(data, containerId) {
         const hrefAttr = disabled ? 'javascript:void(0)' : card.href;
         const isNew_ = isNew(card.date);
 
+        const hasYears = card.years && Object.keys(card.years).length > 0;
+        const yearsHtml = hasYears ? `
+          <div class="years-panel" id="years-${uid}">
+            <div class="years-list">
+              ${Object.entries(card.years).sort((a,b) => b[0]-a[0]).map(([yr, url]) => {
+                const isUnavailable = !url || url === '#';
+                return isUnavailable
+                  ? `<span class="year-btn year-btn-disabled" title="No disponible">
+                       <i class="fa-solid fa-calendar-xmark"></i>${yr}
+                     </span>`
+                  : `<a class="year-btn" href="${url}" target="_blank" onclick="event.stopPropagation()">
+                       <i class="fa-solid fa-calendar-check"></i>${yr}
+                     </a>`;
+              }).join('')}
+            </div>
+          </div>` : '';
+
         return `
-        <div class="card-flip${disabled ? ' is-disabled' : ''}${isNew_ ? ' is-new' : ''}"
+        <div class="card-flip${disabled ? ' is-disabled' : ''}${isNew_ ? ' is-new' : ''}${hasYears ? ' has-years' : ''}"
              style="--card-accent:${color.accent}; --card-icon-bg:${color.iconBg}; --card-color:${color.accent}"
              data-search="${card.title.toLowerCase()} ${card.desc.toLowerCase()}"
              data-new="${isNew_}"
              data-status="${card.status || (isNew_ ? 'new' : 'active')}">
 
+          ${hasYears ? '<div class="perspective-wrap">' : ''}
           <div class="card-inner">
 
             <!-- FRONT -->
@@ -329,14 +362,21 @@ function renderCards(data, containerId) {
               <div class="card-desc">${card.desc}</div>
               <div class="card-footer">
                 <span class="card-tag">${card.tag}</span>
-                ${disabled
-                ? `<span class="btn-qr btn-qr-disabled" title="No disponible">
-                       <i class="fa-solid fa-lock"></i>
-                     </span>`
-                : `<button class="btn-qr" onclick="flipCard(event,this)" title="Ver QR">
-                       <i class="fa-solid fa-qrcode"></i><span>QR</span>
-                     </button>`
-            }
+                <div class="card-footer-actions">
+                  ${hasYears
+                    ? `<button class="btn-years" onclick="toggleYears(event,this,'years-${uid}')" title="Ver por año">
+                         <i class="fa-solid fa-calendar"></i><span>Años</span>
+                       </button>`
+                    : ''}
+                  ${disabled
+                    ? `<span class="btn-qr btn-qr-disabled" title="No disponible">
+                           <i class="fa-solid fa-lock"></i>
+                         </span>`
+                    : `<button class="btn-qr" onclick="flipCard(event,this)" title="Ver QR">
+                           <i class="fa-solid fa-qrcode"></i><span>QR</span>
+                         </button>`
+                  }
+                </div>
               </div>
             </a>
 
@@ -356,6 +396,9 @@ function renderCards(data, containerId) {
             </div>
 
           </div>
+          ${hasYears ? '</div>' : ''}
+
+          ${yearsHtml}
         </div>`;
     }).join('');
 
@@ -374,6 +417,31 @@ function flipCard(event, btn) {
 function flipBack(event, btn) {
     event.stopPropagation();
     btn.closest('.card-flip').classList.remove('flipped');
+}
+
+// ── YEARS PANEL ──────────────────────────────────────────────────────────────
+function toggleYears(event, btn, panelId) {
+    event.preventDefault();
+    event.stopPropagation();
+    const panel = document.getElementById(panelId);
+    if (!panel) return;
+    const card = btn.closest('.card-flip');
+    const isOpen = panel.classList.contains('open');
+
+    // Close all other open panels first
+    document.querySelectorAll('.years-panel.open').forEach(p => {
+        p.classList.remove('open');
+        const otherCard = p.closest('.card-flip');
+        if (otherCard) otherCard.classList.remove('years-open');
+        const otherBtn = otherCard?.querySelector('.btn-years');
+        if (otherBtn) otherBtn.classList.remove('active');
+    });
+
+    if (!isOpen) {
+        panel.classList.add('open');
+        card.classList.add('years-open');
+        btn.classList.add('active');
+    }
 }
 
 // ── FILTER ───────────────────────────────────────────────────────────────────

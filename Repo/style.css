@@ -496,6 +496,9 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
     gap: 16px;
+    /* allow years panels to overflow below cards */
+    overflow: visible;
+    padding-bottom: 4px;
 }
 
 /* ═══════════════════════════════════════
@@ -504,6 +507,24 @@ body {
 .card-flip {
     perspective: 900px;
     height: 218px;
+}
+
+/* cards with years: flex container, no perspective (moved to .perspective-wrap) */
+.card-flip.has-years {
+    perspective: none;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 218px;
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+/* perspective wrapper inside has-years cards */
+.perspective-wrap {
+    perspective: 900px;
+    height: 218px;
+    flex-shrink: 0;
 }
 
 .card-inner {
@@ -714,6 +735,116 @@ body {
     opacity: .5;
     font-size: .7rem;
     cursor: not-allowed;
+}
+
+/* ── FOOTER ACTIONS (QR + Años) ── */
+.card-footer-actions {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Años button */
+.btn-years {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1.5px solid var(--card-accent, var(--primary));
+    background: transparent;
+    color: var(--card-color, var(--primary));
+    font-size: .7rem;
+    font-weight: 700;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: var(--tr);
+    letter-spacing: .2px;
+    white-space: nowrap;
+}
+
+.btn-years i {
+    font-size: 11px;
+}
+
+.btn-years:hover,
+.btn-years.active {
+    background: var(--card-accent, var(--primary));
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 3px 10px hsla(198, 91%, 44%, .28);
+}
+
+/* Years panel — in normal flow, extends card downward */
+.years-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--card-accent, var(--primary));
+    border-radius: 0 0 var(--radius) var(--radius);
+    padding: 0 17px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .32s cubic-bezier(.4,0,.2,1), padding .32s ease;
+    /* match card shadow so it looks like one piece */
+    box-shadow: var(--shadow);
+    /* clip the top corners so it merges with card-inner above */
+    margin-top: -1px;
+}
+
+.years-panel.open {
+    max-height: 130px;
+    padding: 10px 17px 14px;
+}
+
+.years-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.year-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 11px;
+    border-radius: 20px;
+    font-size: .7rem;
+    font-weight: 700;
+    font-family: 'DM Sans', sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--tr);
+    border: 1.5px solid var(--card-accent, var(--primary));
+    color: var(--card-color, var(--primary));
+    background: transparent;
+    letter-spacing: .2px;
+}
+
+.year-btn i {
+    font-size: 10px;
+}
+
+.year-btn:hover {
+    background: var(--card-accent, var(--primary));
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px hsla(198, 91%, 44%, .25);
+}
+
+.year-btn-disabled {
+    opacity: .4;
+    cursor: not-allowed;
+    border-style: dashed;
+    pointer-events: none;
+}
+
+@media(max-width:560px) {
+    .btn-years span {
+        display: none;
+    }
+    .btn-years {
+        padding: 4px 7px;
+    }
 }
 
 /* ── BADGES ── */
