@@ -150,7 +150,8 @@ const indicadoresData = [
         desc: 'Conjunto de indicadores estratégicos para el monitoreo de la gestión sanitaria regional.',
         tag: 'Indicador',
         href: 'https://goo.su/5QGSx',
-        date: '2026-03-18'
+        status: 'wip'
+        
         
     },
     {
@@ -158,8 +159,9 @@ const indicadoresData = [
         title: 'Indicadores de Desempeño MINSA',
         desc: 'Metas e indicadores de desempeño del Ministerio de Salud para establecimientos de primer nivel.',
         tag: 'Indicador',
-        href: '#',
-        status: 'wip'
+        href: 'https://goo.su/5QGSx',
+        date: '2026-03-18'
+        
     },
     {
         icon: 'fa-baby',
