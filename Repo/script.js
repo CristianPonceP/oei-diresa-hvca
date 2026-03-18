@@ -114,8 +114,8 @@ const cardData = [
         title: 'Padrón Nominal',
         desc: 'Registro nominal de niños menores de 6 años para seguimiento y vigilancia nutricional.',
         tag: 'Tablero',
-        href: '#',
-        status: 'wip'
+        href: 'https://goo.su/pZbsF',
+        date: '2026-03-18'
     },
     {
         icon: 'fa-weight-scale',
@@ -149,8 +149,8 @@ const indicadoresData = [
         title: 'Indicadores Sanitarios y de Gestión',
         desc: 'Conjunto de indicadores estratégicos para el monitoreo de la gestión sanitaria regional.',
         tag: 'Indicador',
-        href: 'https://goo.su/OgJrl5u',
-        status: 'wip'
+        href: 'https://goo.su/5QGSx',
+        date: '2026-03-18'
         
     },
     {
