@@ -177,7 +177,7 @@ const indicadoresData = [
         desc: 'Biblioteca centralizada de indicadores de salud pública con fichas técnicas y fuentes.',
         tag: 'Indicador',
         href: 'https://sites.google.com/saludhuancavelica.pe/indicadores-diresa-hvca/inicio',
-        status: 'unavailable'
+        date: '2026-03-20'
     }
 ];
 
