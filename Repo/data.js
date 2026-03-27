@@ -155,7 +155,16 @@ const indicadoresData = [
         tag: 'Indicador',
         href: 'https://sites.google.com/saludhuancavelica.pe/indicadores-diresa-hvca/inicio',
         date: '2026-03-20'
+    },
+    {
+        icon: 'fa-folder-open',
+        title: 'Repositorio de Indicadores SIS',
+        desc: 'Biblioteca centralizada de indicadores de salud pública.',
+        tag: 'Indicador',
+        href: 'https://drive.google.com/drive/folders/1NzIlormZSxAh0iHDAxv5nGe3FpxuOR5t?usp=sharing',
+        date: '2026-03-20'
     }
+
 ];
 
 const manualesData = [
