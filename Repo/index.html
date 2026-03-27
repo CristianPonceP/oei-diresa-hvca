@@ -28,11 +28,17 @@
                 </div>
             </div>
             <div class="header-actions">
-                <div class="search-box">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" id="searchInput" placeholder="Buscar recurso..." />
+                <div class="search-box" role="search">
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    <!-- Búsqueda aplicada a la sección activa; si no hay resultados
+                         se muestra sugerencia hacia otras secciones (FIX #3) -->
+                    <input type="text" id="searchInput" placeholder="Buscar recurso..."
+                           aria-label="Buscar recurso en la sección activa" />
                 </div>
-                <button class="btn-icon" onclick="toggleDark()" title="Modo oscuro">
+                <!-- FIX #8: id añadido para actualizar aria-label desde JS;
+                     aria-label dinámico gestionado por updateDarkIcon() -->
+                <button class="btn-icon" id="darkBtn" onclick="toggleDark()"
+                        aria-label="Activar modo oscuro">
                     <i class="fa-solid fa-moon" id="darkIcon"></i>
                 </button>
             </div>
@@ -42,25 +48,37 @@
         <div class="main">
 
             <!-- SIDEBAR -->
-            <nav class="sidebar" id="sidebar">
+            <!-- FIX #5: estado colapsado restaurado desde localStorage en script.js -->
+            <nav class="sidebar" id="sidebar" aria-label="Menú principal">
                 <div class="sidebar-header">
                     <span class="sidebar-label">Menú</span>
-                    <button class="sidebar-toggle" onclick="toggleSidebar()">
-                        <i class="fa-solid fa-bars-staggered"></i>
+                    <button class="sidebar-toggle" onclick="toggleSidebar()"
+                            aria-label="Colapsar menú lateral">
+                        <i class="fa-solid fa-bars-staggered" aria-hidden="true"></i>
                     </button>
                 </div>
                 <div class="nav-group">
                     <div class="nav-group-title">Principal</div>
-                    <div class="nav-item active" onclick="showSection('tableros', this)">
-                        <div class="nav-icon"><i class="fa-solid fa-chart-column"></i></div>
+                    <!-- FIX #3: data-section usado por switchToSection() para el hint cross-section -->
+                    <div class="nav-item active" data-section="tableros"
+                         onclick="showSection('tableros', this)"
+                         role="button" tabindex="0" aria-current="page"
+                         onkeydown="if(event.key==='Enter')showSection('tableros',this)">
+                        <div class="nav-icon"><i class="fa-solid fa-chart-column" aria-hidden="true"></i></div>
                         <span class="nav-text">Tableros</span>
                     </div>
-                    <div class="nav-item" onclick="showSection('indicadores', this)">
-                        <div class="nav-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <div class="nav-item" data-section="indicadores"
+                         onclick="showSection('indicadores', this)"
+                         role="button" tabindex="0"
+                         onkeydown="if(event.key==='Enter')showSection('indicadores',this)">
+                        <div class="nav-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></div>
                         <span class="nav-text">Indicadores</span>
                     </div>
-                    <div class="nav-item" onclick="showSection('manuales', this)">
-                        <div class="nav-icon"><i class="fa-solid fa-book-medical"></i></div>
+                    <div class="nav-item" data-section="manuales"
+                         onclick="showSection('manuales', this)"
+                         role="button" tabindex="0"
+                         onkeydown="if(event.key==='Enter')showSection('manuales',this)">
+                        <div class="nav-icon"><i class="fa-solid fa-book-medical" aria-hidden="true"></i></div>
                         <span class="nav-text">Manuales</span>
                     </div>
                 </div>
@@ -68,7 +86,10 @@
                     <div class="badge-counts">
                         <div class="badge-row">
                             <span>Recursos activos</span>
-                            <span class="badge-count" id="total-count">—</span>
+                            <!-- FIX #1: valor actualizado desde script.js tras el render
+                                 de todas las secciones, garantizando el conteo correcto -->
+                            <span class="badge-count" id="total-count"
+                                  aria-label="Total de recursos activos">—</span>
                         </div>
                         <div class="badge-row">
                             <span>Última actualización</span>
@@ -79,68 +100,99 @@
             </nav>
 
             <!-- CONTENT -->
-            <main class="content">
+            <main class="content" id="main-content">
 
                 <!-- ── LEYENDA ── -->
-                <div class="legend-bar">
-                    <span class="legend-item"><span class="legend-dot dot-new"></span> Nuevo</span>
-                    <span class="legend-item"><span class="legend-dot dot-wip"></span> En implementación</span>
-                    <span class="legend-item"><span class="legend-dot dot-unavailable"></span> No disponible</span>
+                <div class="legend-bar" role="legend" aria-label="Leyenda de estados">
+                    <span class="legend-item">
+                        <span class="legend-dot dot-new" aria-hidden="true"></span> Nuevo
+                    </span>
+                    <span class="legend-item">
+                        <span class="legend-dot dot-wip" aria-hidden="true"></span> En implementación
+                    </span>
+                    <span class="legend-item">
+                        <span class="legend-dot dot-unavailable" aria-hidden="true"></span> No disponible
+                    </span>
                 </div>
 
                 <!-- ──── TABLEROS ──── -->
-                <div id="tableros" class="content-section active">
+                <div id="tableros" class="content-section active" role="region" aria-label="Tableros">
                     <div class="section-header">
                         <div class="section-title-group">
                             <h2>Estadísticas en Salud</h2>
                             <p>Tableros interactivos por programa sanitario</p>
                         </div>
                         <div class="section-meta">
-                            <span class="chip active" onclick="setFilter('tableros','all',this)">Todos</span>
-                            <span class="chip" onclick="setFilter('tableros','new',this)">Recientes</span>
+                            <span class="chip active" role="button" tabindex="0"
+                                  onclick="setFilter('tableros','all',this)"
+                                  onkeydown="if(event.key==='Enter')setFilter('tableros','all',this)">
+                                Todos
+                            </span>
+                            <span class="chip" role="button" tabindex="0"
+                                  onclick="setFilter('tableros','new',this)"
+                                  onkeydown="if(event.key==='Enter')setFilter('tableros','new',this)">
+                                Recientes
+                            </span>
                         </div>
                     </div>
                     <div class="cards-grid" id="grid-tableros"></div>
-                    <div class="empty-state" id="empty-tableros">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                    <!-- FIX #6: empty-state incluye zona para el hint cross-section -->
+                    <div class="empty-state" id="empty-tableros" role="status">
+                        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
                         <p>No se encontraron resultados</p>
                     </div>
                 </div>
 
                 <!-- ──── INDICADORES ──── -->
-                <div id="indicadores" class="content-section">
+                <div id="indicadores" class="content-section" role="region" aria-label="Indicadores">
                     <div class="section-header">
                         <div class="section-title-group">
                             <h2>Indicadores</h2>
                             <p>Métricas clave por área de salud</p>
                         </div>
                         <div class="section-meta">
-                            <span class="chip active" onclick="setFilter('indicadores','all',this)">Todos</span>
-                            <span class="chip" onclick="setFilter('indicadores','new',this)">Recientes</span>
+                            <span class="chip active" role="button" tabindex="0"
+                                  onclick="setFilter('indicadores','all',this)"
+                                  onkeydown="if(event.key==='Enter')setFilter('indicadores','all',this)">
+                                Todos
+                            </span>
+                            <span class="chip" role="button" tabindex="0"
+                                  onclick="setFilter('indicadores','new',this)"
+                                  onkeydown="if(event.key==='Enter')setFilter('indicadores','new',this)">
+                                Recientes
+                            </span>
                         </div>
                     </div>
                     <div class="cards-grid" id="grid-indicadores"></div>
-                    <div class="empty-state" id="empty-indicadores">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                    <div class="empty-state" id="empty-indicadores" role="status">
+                        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
                         <p>No se encontraron resultados</p>
                     </div>
                 </div>
 
                 <!-- ──── MANUALES ──── -->
-                <div id="manuales" class="content-section">
+                <div id="manuales" class="content-section" role="region" aria-label="Manuales">
                     <div class="section-header">
                         <div class="section-title-group">
                             <h2>Manuales</h2>
                             <p>Documentos técnicos y protocolos</p>
                         </div>
                         <div class="section-meta">
-                            <span class="chip active" onclick="setFilter('manuales','all',this)">Todos</span>
-                            <span class="chip" onclick="setFilter('manuales','new',this)">Recientes</span>
+                            <span class="chip active" role="button" tabindex="0"
+                                  onclick="setFilter('manuales','all',this)"
+                                  onkeydown="if(event.key==='Enter')setFilter('manuales','all',this)">
+                                Todos
+                            </span>
+                            <span class="chip" role="button" tabindex="0"
+                                  onclick="setFilter('manuales','new',this)"
+                                  onkeydown="if(event.key==='Enter')setFilter('manuales','new',this)">
+                                Recientes
+                            </span>
                         </div>
                     </div>
                     <div class="cards-grid" id="grid-manuales"></div>
-                    <div class="empty-state" id="empty-manuales">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                    <div class="empty-state" id="empty-manuales" role="status">
+                        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
                         <p>No se encontraron resultados</p>
                     </div>
                 </div>
@@ -148,12 +200,12 @@
             </main>
         </div>
     </div>
+
+    <!-- FIX #10: datos separados en data.js — editar recursos sin tocar la lógica -->
+    <script src="data.js"></script>
     <script src="script.js"></script>
-    <script>
-        // update sidebar count after render
-        const total = document.querySelectorAll('.card-flip:not(.is-disabled)').length;
-        document.getElementById('total-count').textContent = total;
-    </script>
+    <!-- FIX #1: el contador se actualiza dentro de script.js con updateTotalCount(),
+         llamado después de todos los renderCards(). Se eliminó el script inline. -->
 </body>
 
 </html>
