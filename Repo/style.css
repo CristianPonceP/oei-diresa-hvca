@@ -429,17 +429,9 @@ body {
     flex-shrink: 0;
 }
 
-.dot-new {
-    background: hsl(18, 88%, 50%);
-}
-
-.dot-wip {
-    background: hsl(42, 90%, 44%);
-}
-
-.dot-unavailable {
-    background: hsl(0, 0%, 60%);
-}
+.dot-new         { background: hsl(18, 88%, 50%); }
+.dot-wip         { background: hsl(42, 90%, 44%); }
+.dot-unavailable { background: hsl(0, 0%, 60%); }
 
 /* SECTION HEADER */
 .section-header {
@@ -496,9 +488,6 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
     gap: 16px;
-    /* allow years panels to overflow below cards */
-    overflow: visible;
-    padding-bottom: 4px;
 }
 
 /* ═══════════════════════════════════════
@@ -507,24 +496,6 @@ body {
 .card-flip {
     perspective: 900px;
     height: 218px;
-}
-
-/* cards with years: flex container, no perspective (moved to .perspective-wrap) */
-.card-flip.has-years {
-    perspective: none;
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    min-height: 218px;
-    border-radius: var(--radius);
-    overflow: hidden;
-}
-
-/* perspective wrapper inside has-years cards */
-.perspective-wrap {
-    perspective: 900px;
-    height: 218px;
-    flex-shrink: 0;
 }
 
 .card-inner {
@@ -737,114 +708,21 @@ body {
     cursor: not-allowed;
 }
 
-/* ── FOOTER ACTIONS (QR + Años) ── */
-.card-footer-actions {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-/* Años button */
-.btn-years {
-    display: flex;
-    align-items: center;
+/* FIX #9: hint de interacción visible en móvil / touch */
+.card-mobile-hint {
+    display: none;
+    font-size: .62rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 5px;
     gap: 4px;
-    padding: 4px 10px;
-    border-radius: 20px;
-    border: 1.5px solid var(--card-accent, var(--primary));
-    background: transparent;
-    color: var(--card-color, var(--primary));
-    font-size: .7rem;
-    font-weight: 700;
-    font-family: 'DM Sans', sans-serif;
-    cursor: pointer;
-    transition: var(--tr);
-    letter-spacing: .2px;
-    white-space: nowrap;
-}
-
-.btn-years i {
-    font-size: 11px;
-}
-
-.btn-years:hover,
-.btn-years.active {
-    background: var(--card-accent, var(--primary));
-    color: white;
-    transform: scale(1.05);
-    box-shadow: 0 3px 10px hsla(198, 91%, 44%, .28);
-}
-
-/* Years panel — in normal flow, extends card downward */
-.years-panel {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-top: 2px solid var(--card-accent, var(--primary));
-    border-radius: 0 0 var(--radius) var(--radius);
-    padding: 0 17px;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height .32s cubic-bezier(.4,0,.2,1), padding .32s ease;
-    /* match card shadow so it looks like one piece */
-    box-shadow: var(--shadow);
-    /* clip the top corners so it merges with card-inner above */
-    margin-top: -1px;
-}
-
-.years-panel.open {
-    max-height: 130px;
-    padding: 10px 17px 14px;
-}
-
-.years-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-}
-
-.year-btn {
-    display: inline-flex;
     align-items: center;
-    gap: 5px;
-    padding: 4px 11px;
-    border-radius: 20px;
-    font-size: .7rem;
-    font-weight: 700;
-    font-family: 'DM Sans', sans-serif;
-    text-decoration: none;
-    cursor: pointer;
-    transition: var(--tr);
-    border: 1.5px solid var(--card-accent, var(--primary));
-    color: var(--card-color, var(--primary));
-    background: transparent;
-    letter-spacing: .2px;
+    justify-content: center;
+    opacity: .7;
 }
 
-.year-btn i {
+.card-mobile-hint i {
     font-size: 10px;
-}
-
-.year-btn:hover {
-    background: var(--card-accent, var(--primary));
-    color: white;
-    transform: translateY(-1px);
-    box-shadow: 0 3px 8px hsla(198, 91%, 44%, .25);
-}
-
-.year-btn-disabled {
-    opacity: .4;
-    cursor: not-allowed;
-    border-style: dashed;
-    pointer-events: none;
-}
-
-@media(max-width:560px) {
-    .btn-years span {
-        display: none;
-    }
-    .btn-years {
-        padding: 4px 7px;
-    }
 }
 
 /* ── BADGES ── */
@@ -865,9 +743,7 @@ body {
     animation: badgePop .45s cubic-bezier(.34, 1.56, .64, 1) both;
 }
 
-.badge i {
-    font-size: .6rem;
-}
+.badge i { font-size: .6rem; }
 
 .badge-new {
     background: linear-gradient(135deg, hsl(18, 88%, 50%), hsl(38, 95%, 55%));
@@ -888,15 +764,8 @@ body {
 }
 
 @keyframes badgePop {
-    from {
-        transform: scale(.5);
-        opacity: 0;
-    }
-
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
+    from { transform: scale(.5); opacity: 0; }
+    to   { transform: scale(1);  opacity: 1; }
 }
 
 /* ── BACK ── */
@@ -986,63 +855,15 @@ body {
 }
 
 @keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
-.card-flip {
-    animation: none;
-}
-
+/* FIX #7: los animation-delay por nth-child están eliminados de aquí.
+   Ahora se aplican dinámicamente desde JS en applyCardAnimationDelays().
+   Esto permite soportar cualquier cantidad de cards sin tocar CSS. */
 .content-section.active .card-flip {
     animation: fadeUp .36s ease both;
-}
-
-.content-section.active .card-flip:nth-child(1) {
-    animation-delay: .03s;
-}
-
-.content-section.active .card-flip:nth-child(2) {
-    animation-delay: .07s;
-}
-
-.content-section.active .card-flip:nth-child(3) {
-    animation-delay: .11s;
-}
-
-.content-section.active .card-flip:nth-child(4) {
-    animation-delay: .15s;
-}
-
-.content-section.active .card-flip:nth-child(5) {
-    animation-delay: .19s;
-}
-
-.content-section.active .card-flip:nth-child(6) {
-    animation-delay: .23s;
-}
-
-.content-section.active .card-flip:nth-child(7) {
-    animation-delay: .27s;
-}
-
-.content-section.active .card-flip:nth-child(8) {
-    animation-delay: .31s;
-}
-
-.content-section.active .card-flip:nth-child(9) {
-    animation-delay: .35s;
-}
-
-.content-section.active .card-flip:nth-child(10) {
-    animation-delay: .38s;
 }
 
 /* ═══════════════════════════════════════
@@ -1057,11 +878,14 @@ body {
     padding: 56px 20px;
     color: var(--text-muted);
     display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
 }
 
 .empty-state i {
     font-size: 44px;
-    margin-bottom: 14px;
+    margin-bottom: 6px;
     opacity: .28;
 }
 
@@ -1069,31 +893,44 @@ body {
     font-size: .88rem;
 }
 
+/* FIX #6: sugerencia cross-section cuando no hay resultados */
+.cross-hint-text {
+    font-size: .8rem;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cross-hint-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: .75rem;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: var(--tr);
+}
+
+.cross-hint-btn:hover {
+    background: var(--primary-lt);
+    transform: scale(1.04);
+}
+
 /* ═══════════════════════════════════════
    ICON ANIMATIONS
 ═══════════════════════════════════════ */
 @keyframes heartbeat {
-
-    0%,
-    100% {
-        transform: scale(1);
-    }
-
-    14% {
-        transform: scale(1.13);
-    }
-
-    28% {
-        transform: scale(1);
-    }
-
-    42% {
-        transform: scale(1.07);
-    }
-
-    70% {
-        transform: scale(1);
-    }
+    0%, 100% { transform: scale(1); }
+    14%       { transform: scale(1.13); }
+    28%       { transform: scale(1); }
+    42%       { transform: scale(1.07); }
+    70%       { transform: scale(1); }
 }
 
 .card-flip:not(.is-disabled):hover .card-icon-wrap i.fa-heart-pulse {
@@ -1101,13 +938,8 @@ body {
 }
 
 @keyframes spin-slow {
-    from {
-        transform: rotate(0);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
+    from { transform: rotate(0); }
+    to   { transform: rotate(360deg); }
 }
 
 .card-flip:not(.is-disabled):hover .card-icon-wrap i.fa-ribbon {
@@ -1115,15 +947,8 @@ body {
 }
 
 @keyframes wiggle {
-
-    0%,
-    100% {
-        transform: rotate(-4deg) scale(1.1);
-    }
-
-    50% {
-        transform: rotate(4deg) scale(1.16);
-    }
+    0%, 100% { transform: rotate(-4deg) scale(1.1); }
+    50%       { transform: rotate(4deg) scale(1.16); }
 }
 
 .card-flip:not(.is-disabled):hover .card-icon-wrap i.fa-syringe {
@@ -1131,15 +956,8 @@ body {
 }
 
 @keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0) scale(1.1);
-    }
-
-    50% {
-        transform: translateY(-4px) scale(1.16);
-    }
+    0%, 100% { transform: translateY(0) scale(1.1); }
+    50%       { transform: translateY(-4px) scale(1.16); }
 }
 
 .card-flip:not(.is-disabled):hover .card-icon-wrap i.fa-person-pregnant,
@@ -1148,17 +966,8 @@ body {
 }
 
 @keyframes flicker {
-
-    0%,
-    100% {
-        opacity: 1;
-        transform: scale(1.1);
-    }
-
-    50% {
-        opacity: .7;
-        transform: scale(1.2);
-    }
+    0%, 100% { opacity: 1; transform: scale(1.1); }
+    50%       { opacity: .7; transform: scale(1.2); }
 }
 
 .card-flip:not(.is-disabled):hover .card-icon-wrap i.fa-truck-medical {
@@ -1166,15 +975,8 @@ body {
 }
 
 @keyframes grow {
-
-    0%,
-    100% {
-        transform: scale(1.1);
-    }
-
-    50% {
-        transform: scale(1.26);
-    }
+    0%, 100% { transform: scale(1.1); }
+    50%       { transform: scale(1.26); }
 }
 
 .card-flip:not(.is-disabled):hover .card-icon-wrap i.fa-brain {
@@ -1184,25 +986,18 @@ body {
 /* ═══════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════ */
-@media(max-width:1024px) {
+@media(max-width: 1024px) {
     .cards-grid {
         grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
     }
-
-    .content {
-        padding: 22px 22px;
-    }
-
-    .header {
-        padding: 20px 22px 16px;
-    }
+    .content { padding: 22px 22px; }
+    .header  { padding: 20px 22px 16px; }
 }
 
-@media(max-width:860px) {
+@media(max-width: 860px) {
     .main {
         flex-direction: column;
     }
-
     .sidebar {
         width: 100% !important;
         flex-direction: row;
@@ -1211,13 +1006,9 @@ body {
         overflow-x: auto;
         border-bottom: 1px solid rgba(255, 255, 255, .08);
     }
-
     .sidebar-header,
     .sidebar-footer,
-    .nav-group-title {
-        display: none !important;
-    }
-
+    .nav-group-title { display: none !important; }
     .nav-group {
         display: flex;
         flex-direction: row;
@@ -1225,130 +1016,67 @@ body {
         padding: 0;
         width: 100%;
     }
-
     .nav-item {
         padding: 7px 12px;
         flex-shrink: 0;
         border-radius: 8px;
     }
-
-    .nav-item::before {
-        display: none !important;
-    }
-
-    .nav-text {
-        opacity: 1 !important;
-        width: auto !important;
-    }
-
-    .content {
-        padding: 14px 14px;
-    }
-
+    .nav-item::before { display: none !important; }
+    .nav-text { opacity: 1 !important; width: auto !important; }
+    .content { padding: 14px 14px; }
     .header {
         padding: 14px 14px 12px;
         flex-wrap: wrap;
         gap: 9px;
     }
-
-    .header-text h1 {
-        font-size: 1.05rem;
-    }
-
-    .header-actions {
-        width: 100%;
-    }
-
-    .search-box {
-        flex: 1;
-    }
-
-    .search-box input {
-        width: 100%;
-    }
-
+    .header-text h1   { font-size: 1.05rem; }
+    .header-actions   { width: 100%; }
+    .search-box       { flex: 1; }
+    .search-box input { width: 100%; }
     .section-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
         margin-bottom: 16px;
     }
+    .card-flip   { height: 224px; }
+    .legend-bar  { margin-bottom: 12px; }
 
-    .card-flip {
-        height: 224px;
+    /* FIX #9: mostrar hint de interacción en dispositivos táctiles */
+    .card-mobile-hint {
+        display: flex;
     }
-
-    .legend-bar {
-        margin-bottom: 12px;
+    /* Hacer el texto del botón QR siempre visible en móvil */
+    .btn-qr span {
+        display: inline !important;
     }
 }
 
-@media(max-width:560px) {
+@media(max-width: 560px) {
     .cards-grid {
         grid-template-columns: 1fr 1fr;
         gap: 11px;
     }
-
-    .card-flip {
-        height: 210px;
-    }
-
-    .card-front {
-        padding: 14px 13px 12px;
-    }
-
+    .card-flip    { height: 230px; }
+    .card-front   { padding: 14px 13px 10px; }
     .card-icon-wrap {
         width: 42px;
         height: 42px;
         margin-bottom: 9px;
     }
-
-    .card-icon-wrap i {
-        font-size: 17px;
-    }
-
-    .card-title {
-        font-size: .8rem;
-    }
-
-    .card-desc {
-        font-size: .7rem;
-    }
-
-    .card-footer {
-        margin-top: 7px;
-        padding-top: 7px;
-    }
-
-    .card-tag {
-        font-size: .6rem;
-        padding: 2px 7px;
-    }
-
-    .btn-qr span {
-        display: none;
-    }
-
-    .btn-qr {
-        padding: 4px 7px;
-    }
-
-    .header-text p {
-        display: none;
-    }
-
-    .badge {
-        font-size: .55rem;
-        padding: 2px 7px;
-    }
+    .card-icon-wrap i { font-size: 17px; }
+    .card-title   { font-size: .8rem; }
+    .card-desc    { font-size: .7rem; }
+    .card-footer  { margin-top: 6px; padding-top: 6px; }
+    .card-tag     { font-size: .6rem; padding: 2px 7px; }
+    .btn-qr       { padding: 4px 7px; }
+    .header-text p { display: none; }
+    .badge        { font-size: .55rem; padding: 2px 7px; }
 }
 
-@media(max-width:380px) {
+@media(max-width: 380px) {
     .cards-grid {
         grid-template-columns: 1fr;
     }
-
-    .card-flip {
-        height: 200px;
-    }
+    .card-flip { height: 200px; }
 }
