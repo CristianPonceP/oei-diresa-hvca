@@ -94,7 +94,7 @@ const cardData = [
         title: 'Padrón Nominal',
         desc: 'Registro nominal de niños menores de 6 años para seguimiento y vigilancia nutricional.',
         tag: 'Tablero',
-        href: 'https://goo.su/pZbsF',
+        href: 'https://app.powerbi.com/view?r=eyJrIjoiNWYzZDhhYmMtZWZkZi00YmRlLTg4ZDEtYTQ2ZTFjOGE2ZjM2IiwidCI6IjU5MmFiZWQ5LTMyYmUtNDhmNi1hNmZlLWU3NDZhYWVkYjYxNiIsImMiOjR9',
         date: '2026-03-18'
     },
     {
