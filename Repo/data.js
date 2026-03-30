@@ -102,8 +102,8 @@ const cardData = [
         title: 'DCI y Anemia',
         desc: 'Desnutrición crónica infantil y anemia en niños menores de 5 años por ámbito geográfico.',
         tag: 'Tablero',
-        href: 'https://goo.su/rJzTGq',
-        status: 'wip'
+        href: 'https://app.powerbi.com/view?r=eyJrIjoiYTNiZDc1YjktZTIyYS00NGM3LWE3ZDQtZWIzZDlkMzIwY2VhIiwidCI6IjU5MmFiZWQ5LTMyYmUtNDhmNi1hNmZlLWU3NDZhYWVkYjYxNiIsImMiOjR9',
+        date: '2026-03-30'    /*status: 'wip'*/
     },
     {
         icon: 'fa-lungs',
@@ -162,7 +162,7 @@ const indicadoresData = [
         desc: 'Biblioteca centralizada de indicadores de salud pública.',
         tag: 'Indicador',
         href: 'https://drive.google.com/drive/folders/1NzIlormZSxAh0iHDAxv5nGe3FpxuOR5t?usp=sharing',
-        date: '2026-03-20'
+        status: 'unavailable'   /* date: '2026-03-20'*/
     }
 
 ];
