@@ -162,7 +162,7 @@ const indicadoresData = [
         desc: 'Biblioteca centralizada de indicadores de salud pública.',
         tag: 'Indicador',
         href: 'https://drive.google.com/drive/folders/1NzIlormZSxAh0iHDAxv5nGe3FpxuOR5t?usp=sharing',
-        status: 'unavailable'   /* date: '2026-03-20'*/
+        date: '2026-03-31'
     }
 
 ];
