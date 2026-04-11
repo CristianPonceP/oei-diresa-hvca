@@ -202,7 +202,7 @@ const manualesData = [
         title: 'Sintaxis Reportes HIS',
         desc: 'Scripts y sintaxis de extracción y consolidación de reportes desde el sistema HIS.',
         tag: 'Manual',
-        href: null,
+        href: 'https://drive.google.com/drive/folders/11dDltZ1G8CfwttqH4bnQBayrvxBt0Qq7?usp=sharing',
         status: 'wip'
     }
 ];
