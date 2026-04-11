@@ -181,21 +181,24 @@ const manualesData = [
         title: 'CIE-10 (MINSA-Excel)',
         desc: 'Listado del CIE-10 en formato Excel adaptado por MINSA para el registro en HIS.',
         tag: 'Manual',
-        href: 'https://files.minsa.gob.pe/s/szimSEZTwFrQR25'
+        href: 'https://files.minsa.gob.pe/s/szimSEZTwFrQR25',
+        date: '2026-03-01'
     },
     {
         icon: 'fa-clipboard-list',
         title: 'Manuales de Registro HIS MINSA',
         desc: 'Guías y manuales operativos para el correcto llenado de registros en el sistema HIS.',
         tag: 'Manual',
-        href: 'https://files.minsa.gob.pe/s/74MZgRMddAx7mw2'
+        href: 'https://files.minsa.gob.pe/s/74MZgRMddAx7mw2',
+        date: '2026-03-01'
     },
     {
         icon: 'fa-list-check',
         title: 'Catálogo CPMS',
         desc: 'Catálogo de Procedimientos Médicos y Sanitarios del Sector Salud para codificación.',
         tag: 'Manual',
-        href: 'https://files.minsa.gob.pe/s/dKEnmyJcG5HXCHK'
+        href: 'https://files.minsa.gob.pe/s/dKEnmyJcG5HXCHK',
+        date: '2026-03-01'
     },
     {
         icon: 'fa-code',
@@ -203,6 +206,6 @@ const manualesData = [
         desc: 'Scripts y sintaxis de extracción y consolidación de reportes desde el sistema HIS.',
         tag: 'Manual',
         href: 'https://drive.google.com/drive/folders/11dDltZ1G8CfwttqH4bnQBayrvxBt0Qq7?usp=sharing',
-        status: 'wip'
+        date: '2026-04-10'
     }
 ];
