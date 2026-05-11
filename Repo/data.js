@@ -125,17 +125,17 @@ const cardData = [
 
 const indicadoresData = [
     {
-        icon: 'fa-chart-bar',
-        title: 'Indicadores Sanitarios y de Gestión',
-        desc: 'Conjunto de indicadores estratégicos para el monitoreo de la gestión sanitaria regional.',
+        icon: 'fa-bullseye',
+        title: 'Indicadores de Desempeño MINSA 2026',
+        desc: 'Metas e indicadores de desempeño del Ministerio de Salud para establecimientos de primer nivel.',
         tag: 'Indicador',
-        href: 'https://goo.su/5QGSx',
-        status: 'wip'
+        href: 'https://app.powerbi.com/view?r=eyJrIjoiNDZjNTdiOWItZTkyZC00MmIwLWI4MWQtYTEzYjFiMTNjZWYxIiwidCI6IjU5MmFiZWQ5LTMyYmUtNDhmNi1hNmZlLWU3NDZhYWVkYjYxNiIsImMiOjR9',
+        date: '2026-05-11'
     },
     {
         icon: 'fa-bullseye',
         title: 'Indicadores de Desempeño MINSA',
-        desc: 'Metas e indicadores de desempeño del Ministerio de Salud para establecimientos de primer nivel.',
+        desc: 'Seguimiento de Indicadores de desempeño del Ministerio de Salud.',
         tag: 'Indicador',
         href: 'https://goo.su/5QGSx',
         date: '2026-03-18'
@@ -163,6 +163,14 @@ const indicadoresData = [
         tag: 'Indicador',
         href: 'https://drive.google.com/drive/folders/1NzIlormZSxAh0iHDAxv5nGe3FpxuOR5t?usp=sharing',
         date: '2026-03-31'
+    },
+    {
+        icon: 'fa-chart-bar',
+        title: 'Indicadores Sanitarios y de Gestión',
+        desc: 'Conjunto de indicadores estratégicos para el monitoreo de la gestión sanitaria regional.',
+        tag: 'Indicador',
+        href: 'https://goo.su/5QGSx',
+        status: 'wip'
     }
 
 ];
