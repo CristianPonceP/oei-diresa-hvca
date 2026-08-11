@@ -106,6 +106,14 @@ const cardData = [
         date: '2026-03-30'    /*status: 'wip'*/
     },
     {
+        icon: 'fa-dog',
+        title: 'Vacunación antirrábica canina',
+        desc: 'Seguimiento de la vacunación antirrábica en canes para prevenir la rabia.',
+        tag: 'Tablero',
+        href: 'https://app.powerbi.com/view?r=eyJrIjoiZjM1MmFmZTEtNTc3Ny00NDhkLTk3ZDYtNmQ4ZjdhMGE3OGQ0IiwidCI6IjU5MmFiZWQ5LTMyYmUtNDhmNi1hNmZlLWU3NDZhYWVkYjYxNiIsImMiOjR9',
+        date: '2026-08-11'    /*status: 'wip'*/
+    },
+    {
         icon: 'fa-lungs',
         title: 'Tuberculosis',
         desc: 'Notificaciones de TB, inicio de tratamiento y porcentaje de éxito terapéutico.',
