@@ -110,7 +110,7 @@ const cardData = [
         title: 'Vacunación antirrábica canina',
         desc: 'Seguimiento de la vacunación antirrábica en canes para prevenir la rabia.',
         tag: 'Tablero',
-        href: 'https://app.powerbi.com/view?r=eyJrIjoiZjM1MmFmZTEtNTc3Ny00NDhkLTk3ZDYtNmQ4ZjdhMGE3OGQ0IiwidCI6IjU5MmFiZWQ5LTMyYmUtNDhmNi1hNmZlLWU3NDZhYWVkYjYxNiIsImMiOjR9',
+        href: 'https://app.powerbi.com/view?r=eyJrIjoiZjY4MTRmMzAtMmFjZS00ZTEwLTlmYjEtNWNkMThmYmQ1ZmI1IiwidCI6IjU5MmFiZWQ5LTMyYmUtNDhmNi1hNmZlLWU3NDZhYWVkYjYxNiIsImMiOjR9',
         date: '2026-08-11'    /*status: 'wip'*/
     },
     {
