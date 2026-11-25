@@ -12,7 +12,7 @@ const cardData = [
         title: 'Inmunizaciones',
         desc: 'Coberturas vacunales, dosis aplicadas y avance por distrito y establecimiento de salud.',
         tag: 'Tablero',
-        href: 'https://goo.su/K6o9mI',
+        href: 'https://app.powerbi.com/view?r=eyJrIjoiYzRhYTAyN2UtNzdjYi00NDFkLTg5ZmYtZDg4NjFkNjIwOThjIiwidCI6IjU5MmFiZWQ5LTMyYmUtNDhmNi1hNmZlLWU3NDZhYWVkYjYxNiIsImMiOjR9',
         date: '2026-03-10'
     },
     {
@@ -20,7 +20,7 @@ const cardData = [
         title: 'Promoción de la Salud',
         desc: 'Indicadores de intervenciones comunitarias, estilos de vida saludable y campañas activas.',
         tag: 'Tablero',
-        href: 'https://goo.su/jVlXdWv',
+        href: 'https://app.powerbi.com/view?r=eyJrIjoiM2Y5YzE1MzctMjg4ZS00MWY4LTk2N2EtYmExZGEzZjI5NTcyIiwidCI6IjU5MmFiZWQ5LTMyYmUtNDhmNi1hNmZlLWU3NDZhYWVkYjYxNiIsImMiOjR9',
         date: '2026-03-10'
     },
     {
@@ -63,7 +63,7 @@ const cardData = [
         title: 'Gestante, Niño y Adolescente',
         desc: 'Panel integrado CDS: seguimiento de gestantes, control de crecimiento y desarrollo.',
         tag: 'Tablero',
-        href: 'https://goo.su/dgTz1K',
+        href: 'https://app.powerbi.com/view?r=eyJrIjoiMzgxMmU2NDQtNzczNy00ODU4LWI3NTktYWNiMzhmM2FkNTBhIiwidCI6IjU5MmFiZWQ5LTMyYmUtNDhmNi1hNmZlLWU3NDZhYWVkYjYxNiIsImMiOjR9',
         date: '2026-03-14'
     },
     {
@@ -71,14 +71,14 @@ const cardData = [
         title: 'Tablero de Mando',
         desc: 'Resumen ejecutivo: población, atendidos, atenciones, DCI, anemia y turnos programados.',
         tag: 'Tablero',
-        href: 'https://goo.su/odURUL'
+        href: 'https://app.powerbi.com/view?r=eyJrIjoiYWI4MzZiMWMtNmU3MS00YTc2LWFmNGMtY2RkY2FmNjAwYTYyIiwidCI6IjU5MmFiZWQ5LTMyYmUtNDhmNi1hNmZlLWU3NDZhYWVkYjYxNiIsImMiOjR9'
     },
     {
         icon: 'fa-stethoscope',
         title: 'Morbilidad',
         desc: 'Principales causas de morbilidad registradas en consulta externa por diagnóstico CIE-10.',
         tag: 'Tablero',
-        href: 'https://goo.su/OcuNU6C',
+        href: 'https://app.powerbi.com/view?r=eyJrIjoiYzdhYTNkNjctYjIyYi00ZGFlLWJlYjktMDFlNjc0OTkxNjhiIiwidCI6IjU5MmFiZWQ5LTMyYmUtNDhmNi1hNmZlLWU3NDZhYWVkYjYxNiIsImMiOjR9',
         date: '2026-03-14'
     },
     {
