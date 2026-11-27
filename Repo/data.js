@@ -114,6 +114,22 @@ const cardData = [
         date: '2026-08-11'    /*status: 'wip'*/
     },
     {
+        icon: 'fa-user-doctor',
+        title: 'Producción del Personal de Salud',
+        desc: 'Atenciones y productividad asistencial por profesional de salud y establecimiento.',
+        tag: 'Tablero',
+        href: 'https://app.powerbi.com/view?r=eyJrIjoiYzkzYWFiOWEtOTc5YS00YzIwLWE1ZTktMmM3ZjA1YjNiMjA0IiwidCI6IjU5MmFiZWQ5LTMyYmUtNDhmNi1hNmZlLWU3NDZhYWVkYjYxNiIsImMiOjR9&pageName=ReportSection',
+        date: '2026-11-27'
+    },
+    {
+        icon: 'fa-laptop-medical',
+        title: 'Implementación SIHCE en IPRESS',
+        desc: 'Avance de implementación de Historias Clínicas Electrónicas (SIHCE) en las IPRESS.',
+        tag: 'Tablero',
+        href: 'https://app.powerbi.com/view?r=eyJrIjoiNjA5YmUyMzQtOTJhNC00MzJjLWE4NjgtMWJjMWQ0OWRlNmRlIiwidCI6IjU5MmFiZWQ5LTMyYmUtNDhmNi1hNmZlLWU3NDZhYWVkYjYxNiIsImMiOjR9&pageName=1f9c1876611f5035b343',
+        date: '2026-11-27'
+    },
+    {
         icon: 'fa-lungs',
         title: 'Tuberculosis',
         desc: 'Notificaciones de TB, inicio de tratamiento y porcentaje de éxito terapéutico.',
