@@ -221,7 +221,7 @@ const manualesData = [
         title: 'Manuales de Registro HIS MINSA',
         desc: 'Guías y manuales operativos para el correcto llenado de registros en el sistema HIS.',
         tag: 'Manual',
-        href: 'https://files.minsa.gob.pe/s/74MZgRMddAx7mw2',
+        href: 'https://bvs.minsa.gob.pe/manuales-del-sistema-de-informacion-his/',    /*'https://files.minsa.gob.pe/s/74MZgRMddAx7mw2'*/
         date: '2026-03-01'
     },
     {
